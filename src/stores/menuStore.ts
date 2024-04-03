@@ -1,7 +1,14 @@
 import { defineStore } from 'pinia'
 
+interface MenuItem {
+  pic: string
+  name: string
+  description: string
+  price: string
+}
+
 export const useMenuStore = defineStore('menu', {
-  state: () => ({
+  state: (): { menuItems: MenuItem[][] } => ({
     menuItems: [
       [
         {

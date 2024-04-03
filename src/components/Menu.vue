@@ -142,7 +142,5 @@ function menuClickHandler(e) {
   } else if (e.target.textContent === 'BEVERAGES') {
     selectedMenuOption.value = menuItems[3]
   }
-
-  console.log(selectedMenuOption.value)
 }
 </script>
