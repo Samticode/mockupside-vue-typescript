@@ -1,3 +1,34 @@
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import { useMenuStore } from '../stores/menuStore'
+
+const selectedMenuOption = ref()
+const menuStore = useMenuStore()
+const menuItems = menuStore.menuItems
+
+onMounted(() => {
+  selectedMenuOption.value = menuItems[0]
+})
+
+function menuClickHandler(e) {
+  const menuOptions = document.querySelectorAll('.menu-options')
+  menuOptions.forEach((options) => {
+    options.classList.remove('focus')
+  })
+  e.target.classList.add('focus')
+
+  if (e.target.textContent === 'STARTERS') {
+    selectedMenuOption.value = menuItems[0]
+  } else if (e.target.textContent === 'MAINS') {
+    selectedMenuOption.value = menuItems[1]
+  } else if (e.target.textContent === 'DESSERTS') {
+    selectedMenuOption.value = menuItems[2]
+  } else if (e.target.textContent === 'BEVERAGES') {
+    selectedMenuOption.value = menuItems[3]
+  }
+}
+</script>
+
 <template>
   <section class="menu-section">
     <div class="inner-container">
@@ -113,34 +144,3 @@
   }
 }
 </style>
-
-<script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import { useMenuStore } from '../stores/menuStore'
-
-const selectedMenuOption = ref()
-const menuStore = useMenuStore()
-const menuItems = menuStore.menuItems
-
-onMounted(() => {
-  selectedMenuOption.value = menuItems[0]
-})
-
-function menuClickHandler(e) {
-  const menuOptions = document.querySelectorAll('.menu-options')
-  menuOptions.forEach((options) => {
-    options.classList.remove('focus')
-  })
-  e.target.classList.add('focus')
-
-  if (e.target.textContent === 'STARTERS') {
-    selectedMenuOption.value = menuItems[0]
-  } else if (e.target.textContent === 'MAINS') {
-    selectedMenuOption.value = menuItems[1]
-  } else if (e.target.textContent === 'DESSERTS') {
-    selectedMenuOption.value = menuItems[2]
-  } else if (e.target.textContent === 'BEVERAGES') {
-    selectedMenuOption.value = menuItems[3]
-  }
-}
-</script>

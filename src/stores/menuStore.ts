@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-interface MenuItem {
+export interface MenuItem {
   pic: string
   name: string
   description: string
